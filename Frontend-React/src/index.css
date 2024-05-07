@@ -1,0 +1,1024 @@
+@property --swing-x {
+
+initial-value: 0;
+inherits: false;
+syntax: '<integer>';
+
+}
+@property --swing-y {
+
+initial-value: 0;
+inherits: false;
+syntax: '<integer>';
+
+}
+
+:root {
+  --background: #1a1a1a;
+
+  /* Purple variations */
+
+  --purple: #392165;
+  --purple50: #39216550;
+
+  /* Green variations */
+
+  --green: #60C689;
+  --green50: #60C68950;
+
+  /* Pink variations */
+
+  --pink: #E91E63;
+  --pink50: #E91E6350;
+  --pink25: #E91E6325;
+
+  /* Magenta variations */
+
+  --magenta: #5B2165;
+  --magenta50: #5B216550;
+  --magenta70: #5B216570;
+
+  /* White variations */
+
+  --white: #ECF0F1;
+  --white20: #ECF0F120;
+
+  /* 404 page */
+
+  --button: #b3b3b3;
+  --button-color: #0a0a0a;
+  --shadow: #000;
+  --bg: #737373;
+  --header: #7a7a7a;
+  --color: #fafafa;
+  --lit-header: #e6e6e6;
+  --speed: 2s;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+
+  color: var(--background);
+}
+
+::-webkit-scrollbar-track {
+  color: var(--green50);
+  border-radius: 100vw;
+
+  margin-block: 5rem 0;
+}
+
+::-webkit-scrollbar-thumb {
+  border: .05vw solid var(--bg);
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-color: var(--bg);
+  background-color: var(--green50);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--green50);
+}
+
+.material-icons {
+  font-size: 1.8rem !important;
+
+  cursor: default;
+  vertical-align: bottom;
+
+  color: var(--white);
+}
+
+.invis {
+  display: none !important;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+
+  box-sizing: inherit;
+}
+
+@media(prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  font-family: 'Comfortaa';
+  font-size: 1.8rem;
+  font-weight: bolder;
+
+  overflow: hidden;
+
+  width: 100vw;
+  height: 100vh;
+
+  color: var(--white);
+  background-color: var(--background);
+
+  overscroll-behavior: none;
+}
+
+.content {
+  position: relative;
+
+  max-width: 80rem;
+  max-height: 100vh;
+  margin: auto;
+  padding: 2rem;
+  padding-top: 4rem;
+
+  text-align: center;
+}
+
+/* add any page you want to scroll vertically */
+
+.play {
+  overflow-y: auto;
+
+  max-height: 94vh;
+}
+
+.play::before {
+  position: absolute;
+  z-index: 9;
+  top: 4rem;
+  left: 5%;
+
+  width: 90%;
+  height: 3rem;
+
+  content: '';
+
+  background: linear-gradient(to bottom, var( --background) , transparent);
+}
+
+.play::after {
+  position: absolute;
+  z-index: 9;
+  bottom: 1rem;
+  left: 5%;
+
+  width: 90%;
+  height: 3rem;
+
+  content: '';
+
+  background: linear-gradient(to top, var( --background) , transparent);
+}
+
+/* add anyting you want sticky at bottom */
+
+.ontop-bot {
+  position: sticky;
+  z-index: 50;
+  bottom: 2rem;
+
+  width: 90%;
+  margin: auto;
+}
+
+/* Buttons */
+
+button /* Remove button style */ {
+  font: inherit;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  color: inherit;
+  border: none;
+  outline: inherit;
+  background: none;
+}
+
+.btn-primary {
+  margin: 20px 0;
+  padding: 10px 16px;
+
+  border-radius: 1rem;
+  background-color: var(--magenta70);
+}
+
+.btn-secondary {
+  margin: 20px 0;
+  padding: 10px 16px;
+
+  color: rgba(26, 26, 26, .5);
+  color: var(--white);
+  border: .1rem solid var(--magenta);
+  border-radius: 1rem;
+  background-color: var(--white20);
+}
+
+.btn-back {
+  position: absolute;
+  z-index: 999999;
+  left: 2rem;
+}
+
+/* Loading */
+
+.loading {
+  position: relative;
+
+  display: inline-block;
+
+  width: 80px;
+  height: 80px;
+}
+
+.loading section {
+  position: absolute;
+  left: 8px;
+
+  display: inline-block;
+
+  width: 16px;
+
+  animation: loading 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+
+  background: #fff;
+}
+
+.loading section:nth-child(1) {
+  left: 8px;
+
+  animation-delay: -0.24s;
+}
+
+.loading section:nth-child(2) {
+  left: 32px;
+
+  animation-delay: -0.12s;
+}
+
+.loading section:nth-child(3) {
+  left: 56px;
+
+  animation-delay: 0;
+}
+
+@keyframes loading {
+
+0% {
+  top: 8px;
+
+  height: 64px;
+}
+
+50%,
+100% {
+  top: 24px;
+
+  height: 32px;
+}
+
+}
+
+/* Navigation */
+
+.navbar {
+  display: flex;
+  align-items: center;
+
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2rem;
+
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.navbar .links {
+  margin-left: auto;
+}
+
+.navbar li {
+  list-style: none;
+}
+
+.navbar a {
+  margin-left: 1.6rem;
+  padding: .6rem;
+
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: #f1356d;
+}
+
+/* Home */
+
+.button-list {
+  max-width: 40rem;
+  margin: auto;
+}
+
+.button-list > h2 {
+  font-family: "Rock Salt";
+  font-size: 5rem;
+
+  margin-bottom: 10rem;
+}
+
+a {
+  font-weight: 700;
+
+  margin-bottom: 8px;
+
+  text-decoration: none;
+
+  color: var(--white);
+}
+
+img {
+  height: 100%;
+}
+
+/* Cards */
+
+/* ---- Select type of checkpoint */
+
+.activityCards {
+  font-family: "Open Sans", sans-serif;
+
+  display: grid;
+  justify-content: center;
+
+  margin: auto;
+  padding-top: 6rem;
+
+  gap: 1.5rem;
+  row-gap: 2.5rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.activityCard-title {
+  font-size: 1.4rem;
+}
+
+.activityCard {
+  min-width: 15rem;
+  max-width: 30rem;
+  padding: 20px;
+
+  cursor: pointer;
+
+  border-radius: 2.5rem;
+  background-color: #FFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) , 0 1px 2px rgba( 0, 0, 0, 0.24);
+}
+
+.activityCard .activityCard-header {
+  position: relative;
+
+  overflow: hidden;
+
+  height: 12rem;
+  margin: -20px -20px 20px -20px;
+
+  transition: height 0.5s;
+
+  border-radius: 2.5rem 2.5rem 0 0;
+  background-color: var(--green);
+}
+
+/*
+.activityCard:nth-child(1n) {
+  background-color: var(--purple);
+}
+
+.activityCard:nth-child(2n) {
+  background-color: var(--green);
+}
+
+.activityCard:nth-child(3n) {
+  background-color: var(--pink);
+}
+
+.activityCard:nth-child(4n) {
+  background-color: var(--magenta);
+}
+*/
+
+.activityCard .activityCard-header .activityCard-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+
+  height: 100%;
+
+  transition: transform 0.5s;
+  transform: translateY(-50%) translateX( -50%);
+}
+
+.activityCard .activityCard-body {
+  overflow: hidden;
+
+  height: 6rem;
+
+  transition: height 0.5s;
+}
+
+.activityCard .activityCard-body .activityCard-title {
+  font-size: 1.3em;
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  color: #000;
+}
+
+.activityCard .activityCard-body .activityCard-examples {
+  margin-top: 10px;
+}
+
+.activityCard .activityCard-body .activityCard-examples li {
+  font-size: 1.4rem;
+
+  margin-top: 5px;
+
+  list-style: none;
+
+  transition-delay: 0.5s;
+  transition-duration: 0;
+  transform: translateX(-100%);
+  text-align: start;
+
+  color: #424242;
+}
+
+.activityCard:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25) , 0 10px 10px rgba( 0, 0, 0, 0.22);
+}
+
+.activityCard:hover .activityCard-header {
+  height: 4rem;
+}
+
+.activityCard:hover .activityCard-header .activityCard-icon {
+  transform: translateX(-50%) translateY( -50%) scale( 5);
+}
+
+.activityCard:hover .activityCard-body {
+  height: fit-content;
+}
+
+.activityCard:hover .activityCard-body .activityCard-examples li {
+  transition-timing-function: cubic-bezier(0, 1.5, 1, 1);
+  transition-duration: 0.5s;
+  transform: translateX(0);
+}
+
+.activityCard:hover .activityCard-body .activityCard-examples li:nth-child(1) {
+  transition-delay: 0.25s;
+}
+
+.activityCard:hover .activityCard-body .activityCard-examples li:nth-child(2) {
+  transition-delay: 0.5s;
+}
+
+.activityCard:hover .activityCard-body .activityCard-examples li:nth-child(3) {
+  transition-delay: 0.75s;
+}
+
+/*
+If we ever want to make the cards bigger and add more Examples
+.activityCard:hover .activityCard-body .activityCard-examples li:nth-child(4) {
+  transition-delay: 1s;
+}
+
+.activityCard:hover .activityCard-body .activityCard-examples li:nth-child(5) {
+  transition-delay: 1.25s;
+}
+
+.activityCard:hover .activityCard-body .activityCard-examples li:nth-child(6) {
+  transition-delay: 1.5s;
+}
+*/
+
+/* ---- Select route cards */
+
+@keyframes zoom {
+
+from {
+  object-position: 0 50%;
+}
+
+to {
+  object-position: 100% 50%;
+}
+
+}
+
+.routeCards {
+  font-family: "Open Sans", sans-serif;
+
+  display: grid;
+
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  gap: 2rem;
+  row-gap: 4rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+
+.routeCard {
+  font-size: 1.2rem;
+
+  position: relative;
+
+  display: block;
+  overflow: hidden;
+  align-self: center;
+
+  width: 16rem;
+  height: 30rem;
+  margin: auto;
+
+  cursor: pointer;
+  -webkit-transition: all 0.65s ease;
+  transition: all 0.65s ease;
+
+  border-radius: 8px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+
+  justify-self: center;
+}
+
+.routeCard:hover {
+  -webkit-transform: scale(1.1, 1.1);
+  transform: scale(1.1, 1.1);
+
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.5);
+}
+
+.routeCard-image {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+
+  display: block;
+  overflow: hidden;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+
+  background: linear-gradient(to bottom, rgba( 0, 0, 0, 1) , rgba( 0, 0, 0, 0.5) );
+}
+
+.routeCard-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  -webkit-transition: all 0.65s ease;
+  transition: all 0.65s ease;
+  -webkit-transform: scale(1.3, 1.3);
+  transform: scale(1.3, 1.3);
+  animation-name: zoom;
+
+  opacity: .6;
+
+  object-fit: cover;
+}
+
+.routeCard:hover .routeCard-image img {
+  -webkit-transform: scale(1, 1);
+  transform: scale(1, 1);
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  opacity: 0.3;
+}
+
+.routeCard-header {
+  display: grid;
+
+  width: 100%;
+  height: 10rem;
+}
+
+.routeCard-body {
+  display: grid;
+
+  padding: 0 .5rem;
+}
+
+.routeCard-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+
+  align-self: center;
+
+  margin-bottom: 2px;
+
+  -webkit-transition: all 0.65s ease;
+  transition: all 0.65s ease;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+
+  color: white;
+  background: -webkit-linear-gradient(white, #a1a1a1);
+  -webkit-background-clip: text;
+  text-shadow: 0 1px 2px var(--pink25);
+
+  justify-self: center;
+  -webkit-text-fill-color: transparent;
+}
+
+.routeCard:hover .routeCard-title {
+  background: -webkit-linear-gradient(white, #c1c1c1);
+  -webkit-background-clip: text;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+  -webkit-text-fill-color: transparent;
+}
+
+.routeCard-location {
+  font-size: 1.4rem;
+  font-weight: 500;
+
+  display: inline-block;
+  align-self: center;
+
+  padding: 0.5rem;
+
+  -webkit-transition: all 0.65s ease;
+  transition: all 0.65s ease;
+  text-align: center;
+  letter-spacing: 0.35rem;
+
+  color: white;
+
+  mix-blend-mode: lighten;
+  justify-self: center;
+}
+
+.routeCard:hover .routeCard-location {
+  color: rgba(100, 130, 200, 1);
+}
+
+.routeCard-description {
+  font-size: 1.4rem;
+  font-weight: 100;
+
+  position: relative;
+
+  display: block;
+
+  margin: 22px 0 16px 0;
+
+  -webkit-transition: all 0.65s ease;
+  transition: all 0.65s ease;
+  -webkit-transform: translateY(30%);
+  transform: translateY(30%);
+
+  opacity: 0;
+
+  /* ext-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.35); */
+
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.routeCard:hover .routeCard-description {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+
+  opacity: 1;
+}
+
+.routeCard-footer {
+  position: relative;
+
+  display: grid;
+
+  padding: 10px 20px;
+
+  -webkit-transition: all 0.65s ease;
+  transition: all 0.65s ease;
+  -webkit-transform: translateY(60%);
+  transform: translateY(60%);
+
+  opacity: 0;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "date category";
+}
+
+.routeCard:hover .routeCard-footer {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+
+  opacity: 1;
+}
+
+.routeCard-dificulty {
+  font-size: 1rem;
+  font-weight: 100;
+
+  display: inline-block;
+  align-self: left;
+
+  text-transform: uppercase;
+
+  color: rgba(250, 250, 250, 0.4);
+  text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.45);
+
+  grid-area: date;
+  justify-self: left;
+}
+
+/* Form */
+
+.form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding-top: 4rem;
+
+  text-align: center;
+}
+
+.form label {
+  display: block;
+
+  text-align: left;
+}
+
+.form h2 {
+  margin-bottom: 30px;
+}
+
+.form input,
+.form textarea,
+.form select {
+  display: block;
+
+  box-sizing: border-box;
+  width: 100%;
+  margin: 10px 0;
+  padding: 6px 10px;
+
+  border: .1rem solid var(--magenta);
+  border-radius: 1rem;
+}
+
+.form button {
+  padding: 1rem;
+
+  cursor: pointer;
+
+  color: var(--white);
+  border: 0;
+  border-radius: 1rem;
+  background: #392165;
+}
+
+/* Game.js */
+
+.dev-section {
+  margin-top: 10vh;
+}
+
+.activity-title {
+  font-size: 5rem;
+}
+
+.activity-header {
+  height: 25vh;
+  margin: auto;
+  margin-top: 5vh;
+  padding: 5px;
+
+  border: white solid 2px;
+  border-radius: 2rem;
+  background-color: #000;
+}
+
+/* Page not found */
+
+.notfound {
+  font-family: 'Roboto', sans-serif;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  min-width: 100vw;
+  min-height: 100vh;
+
+  color: var(--color);
+  background: var(--bg);
+
+  perspective: 1200px;
+}
+
+.notfound .btn-primary {
+  font-size: 1.8rem;
+
+  max-width: 20rem;
+  margin: auto;
+  padding: 1rem 4rem;
+
+  text-decoration: none;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+
+  color: var(--button-color);
+  border-radius: 6.4rem;
+  background: var(--button);
+}
+
+.notfound p {
+  font-weight: 100;
+}
+
+.notfound h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: clamp(8rem, 40vmin, 32rem);
+
+  margin: 0;
+  margin-bottom: 1.6rem;
+
+  transform: translate3d(0, 0, 0vmin);
+  -webkit-animation: swing var(--speed) infinite alternate ease-in-out;
+  animation: swing var(--speed) infinite alternate ease-in-out;
+  letter-spacing: 1.6rem;
+
+  opacity: .7;
+  background: radial-gradient(var( --lit-header) , var( --header) 45%) var( --x) 100%/200% 200%;
+  -webkit-background-clip: text;
+
+  --x: calc(50% +( var( --swing-x) * 0.5) * 1%);
+}
+
+.notfound h1:after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+
+  content: "404";
+  transform: scale(1.05) translate3d( 0, 12%, -10vmin) translate( calc( ( var( --swing-x, 0) * 0.05) * 1%) , calc( ( var( --swing-y) * 0.05) * 1%) );
+  -webkit-animation: swing var(--speed) infinite alternate ease-in-out;
+  animation: swing var(--speed) infinite alternate ease-in-out;
+
+  color: var(--shadow);
+
+  filter: blur(1.5vmin);
+}
+
+.spotlight {
+  width: 100%;
+  height: 100%;
+
+  transform: rotate(calc( var( --swing-x) * -0.25deg) );
+  transform-origin: 50% 30%;
+  animation: swing var(--speed) infinite alternate-reverse ease-in-out;
+
+  background: radial-gradient(40% 40% at 50% 42%, transparent, #000 35%);
+}
+
+.game-input {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 10px 0;
+  padding: 6px 10px;
+
+  border: .1rem solid var(--magenta);
+  border-radius: 1rem;
+}
+
+.game-puzzel--input h2 {
+  margin-top: 1vh;
+}
+
+.spotlight-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  overflow: hidden;
+}
+
+.spotlight-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 250vmax;
+  height: 250vmax;
+
+  transform: translate(-50%, -50%);
+}
+
+.notfound-info {
+  line-height: 1.5;
+
+  z-index: 2;
+
+  max-width: clamp(25.6rem, 90vmin, 40rem);
+
+  text-align: center;
+}
+
+.notfound-info > p {
+  margin-bottom: 4.8rem;
+}
+
+@-webkit-keyframes swing {
+
+0% {
+  --swing-x: -100;
+  --swing-y: -100;
+}
+
+50% {
+  --swing-y: 0;
+}
+
+100% {
+  --swing-y: -100;
+  --swing-x: 100;
+}
+
+}
+@keyframes swing {
+
+0% {
+  --swing-x: -100;
+  --swing-y: -100;
+}
+
+50% {
+  --swing-y: 0;
+}
+
+100% {
+  --swing-y: -100;
+  --swing-x: 100;
+}
+
+}
+
+/* Background */
+
+.background {
+  position: fixed;
+  z-index: -10;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+.blob,
+.blob-container {
+  position: absolute;
+}
+
+@media(max-width: 650px) {
+  .routeCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  * {
+    scrollbar-width: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+}
